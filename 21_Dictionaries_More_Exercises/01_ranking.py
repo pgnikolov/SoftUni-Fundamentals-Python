@@ -10,7 +10,7 @@
 
 contests = {}
 participants = {}
-
+best_score = {}
 info = input()
 
 while not info == "end of contests":
@@ -29,13 +29,29 @@ while not info_part == "end of submissions":
     name = all_info[2]
     points = int(all_info[3])
     if contest in contests and key in contests[contest]:
-        if contest not in participants:
-            participants[contest] = {}
-        if name not in participants[contest]:
-            participants[contest].setdefault(name, points)
-        elif name in participants[contest] and points > participants[contest][name]:
-            participants[contest][name] = points
+        if name not in participants:
+            participants[name] = {}
+            best_score[name] = 0
+        if contest not in participants[name]:
+            participants[name].setdefault(contest, points)
+            best_score[name] += points
+        else:
+            if points > participants[name][contest]:
+                participants[name][contest] = points
+                best_score[name] += points - participants[name][contest]
+
     info_part = input()
 
-print(contests)
-print(participants)
+for candidate, result in best_score.items():
+    if result == max(best_score.values()):
+        print(f"Best candidate is {candidate} with total {int(result)} points.")
+
+participants_sort = dict(sorted(participants.items()))
+
+print("Ranking:")
+
+for key, value in participants_sort.items():
+    print(f"{key}")
+    sort_values = sorted(value.items(), key=lambda x: x[1], reverse=True)
+    for nkey, nvalue in sort_values:
+        print(f"#  {nkey} -> {nvalue}")
