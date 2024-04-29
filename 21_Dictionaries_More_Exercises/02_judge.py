@@ -21,16 +21,17 @@ while not command == "no more time":
     name = info[0]
     contest = info[1]
     points = int(info[2])
+    if name not in participants:
+        participants[name] = 0
     if contest not in contests:
         contests[contest] = {}
     if name not in contests[contest]:
-        contests[contest].setdefault(name, points)
+        contests[contest][name] = points
+        participants[name] += points
     else:
-        if points > contests[contest][name]:
+        if contests[contest][name] < points:
+            participants[name] += points - contests[contest][name]
             contests[contest][name] = points
-    if name not in participants:
-        participants[name] = 0
-    participants[name] = points + participants[name]
 
     command = input()
 
@@ -39,7 +40,6 @@ for key, value in contests.items():
     sorted_part = sorted(value.items(), key=lambda x: (-x[1], x[0]))
     sorted_contests[key] = dict(sorted_part)
 
-sorted_part = dict(sorted(participants.items(), key=lambda x: (-x[1], x[0])))
 
 for key, value in sorted_contests.items():
     print(f"{key}: {len(value)} participants")
@@ -48,8 +48,10 @@ for key, value in sorted_contests.items():
         place += 1
         print(f"{place}. {nkey} <::> {nvalue}")
 
-part = 0
-print("Individual st5andings:")
+print("Individual standings:")
+sorted_part = dict(sorted(participants.items(), key=lambda x: (-x[1])))
+place = 0
 for part, score in sorted_part.items():
-    print(f"{part} -> {score}")
+    place += 1
+    print(f"{place}. {part} -> {score}")
 
