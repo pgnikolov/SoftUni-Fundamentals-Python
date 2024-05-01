@@ -20,6 +20,7 @@ Online judge system - https://judge.softuni.org/
 - [x] [Exercise: Functions](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/11_Functions_Exercise)
 - [x] [More exercise: Functions](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/12_Functions_More_Exercises%20)
 - [x] [Lists Advanced](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/13_Lists_Advanced_Lab)
+- [x] [Lists Advanced: Exercise](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/14_Lists_Advanced_Exercise%20) 
 - [x] [Dictionaries](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/19_Dictionaries_Lab%20)
 - [x] [Dictionaries Exercise](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/20_Dictionaries_Exercise)
 - [x] [Dictionaries More Exercises](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/21_Dictionaries_More_Exercises)
