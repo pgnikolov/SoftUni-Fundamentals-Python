@@ -25,3 +25,23 @@
 #     4. The final string is "TestString".
 # After that, print the final string on the console.
 
+hidden_msg = [char for char in input()]
+
+num_list = [int(char) for char in hidden_msg if char.isdigit()]
+
+non_num = [char for char in hidden_msg if not char.isdigit()]
+
+take_list = [num_list[i] for i in range(len(num_list)) if i % 2 == 0]
+skip_list = [num_list[i] for i in range(len(num_list)) if i % 2 != 0]
+
+final_msg = []
+for index in range(len(take_list)):
+    for i in range(take_list[index]):
+        if len(non_num) > 0:
+            final_msg.append(non_num[0])
+            non_num.pop(0)
+    if non_num:
+        for j in range(skip_list[index]):
+            non_num.pop(0)
+
+print("".join(final_msg))
