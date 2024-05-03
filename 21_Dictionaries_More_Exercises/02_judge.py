@@ -12,7 +12,7 @@
 # every participant ordered by total points in descending order, and then by alphabetical order.
 
 contests = {}
-participants = {}
+part_dict = {}
 
 command = input()
 
@@ -21,37 +21,33 @@ while not command == "no more time":
     name = info[0]
     contest = info[1]
     points = int(info[2])
-    if name not in participants:
-        participants[name] = 0
+    if name not in part_dict:
+        part_dict[name] = 0
     if contest not in contests:
         contests[contest] = {}
     if name not in contests[contest]:
         contests[contest][name] = points
-        participants[name] += points
+        part_dict[name] += points
     else:
         if contests[contest][name] < points:
-            participants[name] += points - contests[contest][name]
+            part_dict[name] += points - contests[contest][name]
             contests[contest][name] = points
 
     command = input()
 
 sorted_contests = {}
-for key, value in contests.items():
-    sorted_part = sorted(value.items(), key=lambda x: (-x[1], x[0]))
-    sorted_contests[key] = dict(sorted_part)
-
-
-for key, value in sorted_contests.items():
-    print(f"{key}: {len(value)} participants")
+for contest, participants in contests.items():
+    print(f"{contest}: {len(participants)} participants")
+    sorted_part = sorted(participants.items(), key=lambda x: (-x[1], x[0]))
     place = 0
-    for nkey, nvalue in value.items():
+    for participant, score in sorted_part:
         place += 1
-        print(f"{place}. {nkey} <::> {nvalue}")
+        print(f"{place}. {participant} <::> {score}")
 
 print("Individual standings:")
-sorted_part = dict(sorted(participants.items(), key=lambda x: (-x[1])))
+sorted_part_dict = sorted(part_dict.items(), key=lambda x: (-x[1], x[0]))
 place = 0
-for part, score in sorted_part.items():
+for part, score in sorted_part_dict:
     place += 1
     print(f"{place}. {part} -> {score}")
 
