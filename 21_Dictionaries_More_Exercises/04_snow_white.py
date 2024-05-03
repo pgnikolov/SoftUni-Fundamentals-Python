@@ -15,28 +15,38 @@
 #     • As output, you must print the dwarfs, ordered in the way, specified above.
 #     • The output format is: "({hat_color}) {name} <-> {physics}"
 
-dwarfs_dict = {}
+dwarfs = {}
+hat_colors = {}
 
 command = input()
 
 while not command == "Once upon a time":
     info = command.split(" <:> ")
     name = info[0]
-    color = info[1]
+    hat_color = info[1]
+    if hat_color not in hat_colors:
+        hat_colors[hat_color] = 0
+    hat_colors[hat_color] += 1
     physics = int(info[2])
-    if color not in dwarfs_dict:
-        dwarfs_dict[color] = {}
-        dwarfs_dict[color][name] = physics
+    name_color = name + hat_color
+    if name_color not in dwarfs:
+        # dwarfs[name_plus_color] = {}
+        dwarfs[name_color] = {'name': name, 'color': hat_color, 'physics': physics}
     else:
-        if name not in dwarfs_dict[color]:
-            dwarfs_dict[color][name] = physics
-        elif name in dwarfs_dict[color] and physics > dwarfs_dict[color][name]:
-            dwarfs_dict[color][name] = physics
+        if physics > dwarfs[name_color]["physics"]:
+            dwarfs[name_color]["physics"] = physics
+            hat_colors[hat_color] -= 1
     command = input()
 
-sorted_dwarfs = dict(sorted(dwarfs_dict.items(), key=lambda x: (-max(x[1].values()), -len(x[1]))))
+current_dwarfs = list(dwarfs.values())
 
-for color, dwarfs in sorted_dwarfs.items():
-    for name, physics in dwarfs.items():
-        print(f"({color}) {name} <-> {physics}")
+for dwarf in current_dwarfs:
+    for color in hat_colors:
+        if color == dwarf["color"]:
+            # var. for counting dwarfs with equal colors
+            dwarf["samecolor"] = hat_colors[color]
 
+sorted_current_dwarfs = sorted(current_dwarfs, key=lambda x: (-x["physics"], -x["samecolor"]))
+
+for el in sorted_current_dwarfs:
+    print(f"({el['color']}) {el['name']} <-> {el['physics']}")
