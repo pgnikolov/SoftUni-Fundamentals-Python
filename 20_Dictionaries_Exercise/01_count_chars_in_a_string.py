@@ -10,5 +10,7 @@ for char in letter_list:
         letters_dict[char] = 0
     letters_dict[char] += 1
 
-for k, v in letters_dict.items():
-    print(f"{k} -> {v}")
+# for k, v in letters_dict.items():
+#     print(f"{k} -> {v}")
+
+[print(f"{k} -> {letters_dict[k]}") for k in letters_dict]
