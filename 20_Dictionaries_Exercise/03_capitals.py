@@ -8,5 +8,6 @@ capitals = [cap for cap in input().split(", ")]
 
 cc_dict = dict(zip(countries, capitals))
 
-for k, v in cc_dict.items():
-    print(f"{k} -> {v}")
+# for k, v in cc_dict.items():
+#     print(f"{k} -> {v}")
+[print(f"{k} -> {cc_dict[k]}") for k in cc_dict]
