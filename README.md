@@ -8,6 +8,7 @@ Online judge system - https://judge.softuni.org/
 
 ## Course contents:
 - [x] [Basic Syntax, Conditional Statements and Loops](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/01_Basic_Syntax_Conditional_Statements_and_Loops)
+    - [x] [Lecturer's Task-Pattern Drawing](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/01_Basic_Syntax_Conditional_Statements_and_Loops/Python%E2%80%93Pattern-Drawing)
 - [x] [Exercise: Basic Syntax, Conditional Statements and Loops](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/02_Basic_Syntax_Conditional_Statements_and_Loops_Exercise)
 - [x] [More exercises: Basic Syntax, Conditional Statements and Loops](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/03_Basic_Syntax_Conditional_Statements_and_Loops_More_Exercises%20)
 - [x] [Data Types and Variables](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/04_Data_Types_and_Variables_Lab%20)
