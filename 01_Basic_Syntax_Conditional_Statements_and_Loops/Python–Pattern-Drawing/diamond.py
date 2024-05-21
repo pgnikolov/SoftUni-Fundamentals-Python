@@ -1,7 +1,6 @@
-n = 5
+rows = 5
 
-for i in range(1, n + 1):
-    print(" " * (n - i), ' *' * i)
-
-for j in range(1, n):
-    print(" " * j, " *" * (n - j))
+for row in list(range(1, rows + 1, 2)) + list(range(rows - 2, 0, -2)):
+    spaces = " " * ((rows - row) // 2)
+    stars = "*" * row
+    print(spaces + stars)
