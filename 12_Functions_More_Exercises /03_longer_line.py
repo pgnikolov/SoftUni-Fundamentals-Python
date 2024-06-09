@@ -7,9 +7,9 @@ import math
 
 
 def longer_line(x1, y1, x2, y2, x3, y3, x4, y4):
-    lenght_first_line = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
-    lenght_second_line = math.sqrt((x3 - x4) ** 2 + (y3 - y4) ** 2)
-    if lenght_first_line > lenght_second_line:
+    lenght_line_one = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    lenght_line_two = math.sqrt((x3 - x4) ** 2 + (y3 - y4) ** 2)
+    if lenght_line_one > lenght_line_two:
         if x1 ** 2 + y1 ** 2 <= x2 ** 2 + y2 ** 2:
             return f"({math.floor(x1)}, {math.floor(y1)})({math.floor(x2)}, {math.floor(y2)})"
         else:
@@ -29,4 +29,48 @@ e = float(input())
 f = float(input())
 g = float(input())
 h = float(input())
+print(longer_line(a, b, c, d, e, f, g, h))
+
+import math
+
+
+def distance(x1, y1, x2, y2):
+    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
+
+def closer(x1, y1, x2, y2):
+    return (x1 ** 2 + y1 ** 2) <= (x2 ** 2 + y2 ** 2)
+
+
+def format_point(x, y):
+    return f"({math.floor(x)}, {math.floor(y)})"
+
+
+def longer_line(x1, y1, x2, y2, x3, y3, x4, y4):
+    length_first = distance(x1, y1, x2, y2)
+    length_second = distance(x3, y3, x4, y4)
+
+    if length_first >= length_second:
+        if closer(x1, y1, x2, y2):
+            return format_point(x1, y1) + format_point(x2, y2)
+        else:
+            return format_point(x2, y2) + format_point(x1, y1)
+    else:
+        if closer(x3, y3, x4, y4):
+            return format_point(x3, y3) + format_point(x4, y4)
+        else:
+            return format_point(x4, y4) + format_point(x3, y3)
+
+
+# Read input
+a = float(input())
+b = float(input())
+c = float(input())
+d = float(input())
+e = float(input())
+f = float(input())
+g = float(input())
+h = float(input())
+
+# Print the result
 print(longer_line(a, b, c, d, e, f, g, h))
