@@ -17,17 +17,17 @@
 
 waiting_people = int(input())
 
-lift_status = [int(char) for char in input().split(" ")]
+current_state_of_the_lift = [int(char) for char in input().split(" ")]
 
-for i in range(len(lift_status)):
-    while lift_status[i] < 4 and waiting_people > 0:
-        lift_status[i] += 1
+for i in range(len(current_state_of_the_lift)):
+    while current_state_of_the_lift[i] < 4 and waiting_people > 0:
+        current_state_of_the_lift[i] += 1
         waiting_people -= 1
 
-if waiting_people == 0 and not all(wagon == 4 for wagon in lift_status):
+if waiting_people == 0 and not all(wagon == 4 for wagon in current_state_of_the_lift):
     print("The lift has empty spots!")
 elif waiting_people > 0:
     print(f"There isn't enough space! {waiting_people} people in a queue!")
 
-print(*lift_status, sep=" ")
+print(*current_state_of_the_lift, sep=" ")
 
