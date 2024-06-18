@@ -10,28 +10,31 @@ while True:
     if command == "end":
         break
 
+    first_index, second_index = [int(x) for x in command.split()]
     moves += 1
-    indexes = command.split(" ")
 
-    if (0 > int(indexes[0]) or int(indexes[0]) >= len(elements)) or (
-            0 > int(indexes[1]) or int(indexes[1]) >= len(elements)):
-        new_element = f"-{moves}a"
-        index_new_el = int(len(elements) / 2)
-        elements = elements[:index_new_el] + [new_element] * 2 + elements[index_new_el:]
+    if first_index == second_index or not 0 <= first_index < len(elements) or not 0 <= second_index < len(elements):
+        half_len = int(len(elements)/2)
+        el_insert = f"-{moves}a"
+        elements = elements[:half_len] + [el_insert, el_insert] + elements[half_len:]
         print("Invalid input! Adding additional elements to the board")
-
-    elif elements[int(indexes[0])] == elements[int(indexes[1])]:
-        print(f"Congrats! You have found matching elements - {elements[int(indexes[0])]}!")
-        elements.pop(max(int(indexes[0]), (int(indexes[1]))))
-        elements.pop(min(int(indexes[0]), (int(indexes[1]))))
-
-    elif elements[int(indexes[0])] != elements[int(indexes[1])]:
+    elif elements[first_index] == elements[second_index]:
+        print(f"Congrats! You have found matching elements - {elements[first_index]}!")
+        if second_index > first_index:
+            elements.pop(second_index)
+            elements.pop(first_index)
+        else:
+            elements.pop(first_index)
+            elements.pop(second_index)
+    else:
         print("Try again!")
 
-    if len(elements) == 0:
-        print(f"You have won in {moves} turns!")
+    if not elements:
         break
 
 if command == "end":
     final = " ".join(elements)
     print(f"Sorry you lose :(\n{final}")
+
+if len(elements) == 0:
+    print(f"You have won in {moves} turns!")
