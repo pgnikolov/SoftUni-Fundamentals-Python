@@ -35,3 +35,5 @@ Online judge system - https://judge.softuni.org/
 - [x] [Regular_Expressions More Exercises](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/27_Regular_Expressions-More%20Exercises)
 - [x] [Programming Fundamentals Final Exam Preparation](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/Final_Exam)
 - [x] [Programming Fundamentals Final Exam](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/tree/main/Fundamentals-Final-Exam-4-August-2024)
+
+ [Programming Fundamentals with Python - May 2024 - Certificate](https://github.com/pgnikolov/SoftUni-Fundamentals-Python/blob/main/Programming%20Fundamentals%20with%20Python%20-%20May%202024%20-%20Certificate.pdf)
